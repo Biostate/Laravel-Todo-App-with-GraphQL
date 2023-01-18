@@ -16,6 +16,7 @@ type Query {
     users(
       "Filters by name. Accepts SQL LIKE wildcards `%` and `_`."
       name: String @where(operator: "like")
+      orderBy: _ @orderBy(columns: ["created_at"])
     ): [User!]! @paginate(defaultCount: 10)
 }
 
