@@ -1,0 +1,15 @@
+scalar DateTime
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Todo{
+    id: ID!
+    title: String!
+    note: String
+    is_completed: Boolean!
+    completed_at: DateTime
+
+    user: User! @belongsTo
+
+    created_at: DateTime!
+    updated_at: DateTime!
+}
