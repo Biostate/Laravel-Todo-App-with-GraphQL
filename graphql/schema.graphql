@@ -27,6 +27,8 @@ type User {
     "Non-unique name."
     name: String!
 
+    lastname: String!
+
     "Unique email address."
     email: String!
 
