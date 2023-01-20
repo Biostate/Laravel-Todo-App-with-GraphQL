@@ -25,6 +25,7 @@ type Query {
 
     todos(
       is_completed: Boolean @eq
+      orderBy: _ @orderBy(columns: ["created_at"])
     ): [Todo] @paginate(defaultCount: 10)
 }
 
