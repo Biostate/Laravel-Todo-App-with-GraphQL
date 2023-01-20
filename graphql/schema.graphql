@@ -28,6 +28,37 @@ type Query {
     ): [Todo] @paginate(defaultCount: 10)
 }
 
+type Mutation{
+  createTodo(
+    input: CreateTodoInput! @spread
+  ): Todo @create
+
+  updateTodo(
+    input: UpdateTodoInput! @spread
+  ): Todo @update
+
+  deleteTodo(
+    id: ID!
+  ): Todo @delete
+}
+
+input CreateTodoInput{
+  userId: ID! @rename(attribute: "user_id") @rules(apply: ["exists:users,id"])
+  title: String! @rules(apply: ["max:255"])
+  note: String
+  isCompleted: Boolean @rename(attribute: "is_completed")
+  completedAt: DateTime @rename(attribute: "completed_at")
+}
+
+input UpdateTodoInput{
+  id: ID!
+  userId: ID @rename(attribute: "user_id") @rules(apply: ["exists:users,id"])
+  title: String! @rules(apply: ["max:255"])
+  note: String
+  isCompleted: Boolean @rename(attribute: "is_completed")
+  completedAt: DateTime @rename(attribute: "completed_at")
+}
+
 "Account of a person who utilizes this application."
 type User {
     "Unique primary key."
