@@ -5,11 +5,11 @@ type Todo{
     id: ID!
     title: String!
     note: String
-    is_completed: Boolean!
-    completed_at: DateTime
+    isCompleted: Boolean! @rename(attribute: "is_completed")
+    completedAt: DateTime @rename(attribute: "completed_at")
 
     user: User! @belongsTo
 
-    created_at: DateTime!
-    updated_at: DateTime!
+    createdAt: DateTime! @rename(attribute: "created_at")
+    updatedAt: DateTime! @rename(attribute: "updated_at")
 }
